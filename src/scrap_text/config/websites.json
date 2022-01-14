@@ -1,0 +1,7 @@
+{
+  "websites": [
+        {"title": "hy_wikipedia", "url": "https://hy.wikipedia.org/wiki/Parov_Stelar", "tag": "div", "id": "mw-parser-output"}
+      , {"title":  "news_am", "url": "https://news.am/arm/news/680384.html", "tag": "span", "id": "article-body"}
+    ]
+  , "browser_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
+}
