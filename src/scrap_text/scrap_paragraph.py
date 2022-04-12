@@ -5,6 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import json
+import dataset_controller
 
 #Constants
 CONFIG_FILE = "./config/websites.json"
@@ -27,6 +28,8 @@ def get_cleared_paragraphs(text):
         if is_clear_paragraph(par[i]):
             cleared_text.append(par[i])
     print(">>> Found about: ", i, " text paragraphs out from:", par_length)
+    #dataset_controller.prepare_par(cleared_text)
+    #DOESNT work well unremove if fixed in dataset_controller.py
     return cleared_text
 
 def scrap_url(header, url, tag, id):
@@ -57,5 +60,4 @@ if __name__ == "__main__":
 
 #Connecting to website to request data
 #TODO: Make function to call various websites by passing find class/id
-#TODO: Make main to call downloading data and storing in file
 
