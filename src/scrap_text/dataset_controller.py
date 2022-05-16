@@ -6,11 +6,12 @@ import pdb
 
 DATASET_PATH = "../dataset/"
 test_txt_file = "Harry Potter and the Deathly Hallows.txt"
+test_file = "test.txt"
 
 punctuation = {
   "hy": ["։", "․" , "֊", " ", "՞", "՜", "՛", "՝", "«", "»", ";", "*", "―", "(", ")", '"'],
-  "en": [" "]
-  #"en": [" ", "." , "-", ":", "?", "~", ";", "*", "―", "(", ")", '"', "'", "<", ">", "_"]
+  "en": [" ", "." , "-", ":", "?", "~", ";", "*", "―", "(", ")", '"', "'", "<", ">", "_"],
+  "space": " "
 }
 
 def prepare_par(par):
@@ -26,20 +27,30 @@ def load_dataset(path):
     file.close()
     return data
 
+def get_words_by(text, delimiter):
+    words_list = text.split(delimiter)
+    #print("-> Amount of words splitted by delimiter:", delimiter, "is:", len(words_list))
+    return words_list
+
 def split_words(text):
-    c = 0
-    #for t in text:
-    for p in punctuation["en"]:
-        c = c + 1
-        print(c, "Spliting text by:", p)
-        pdb.set_trace()
-        text = text.split(p)
-    #text_part = 
-    # TODO: doesnlt work well now, should fix splitted words.
+    all_words = []
+
+    spaced_text = text.split(punctuation["space"])
+    print("----> spaced text length is:", len(spaced_text))
+    for i in spaced_text:
+        print("Spliting by:", i)
+        #pdb.set_trace()
+        delimiter = punctuation["en"]
+        for d in delimiter:
+            all_words.extend(get_words_by(text, d))
+            print("----> spaced text length is:", len(all_words), all_words)
+
+    # TODO: doesn't work well now, should fix splitted words.
     return text
 
-text = load_dataset(test_txt_file)
-words = split_words(text)
+#text = load_dataset(test_txt_file)
+database_text = load_dataset(test_file)
+words = split_words(database_text)
 
 file = open(DATASET_PATH + "words_hp.txt", mode="w")
 file.writelines(words)
