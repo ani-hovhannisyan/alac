@@ -10,6 +10,7 @@ import os
 
 #Constants
 CONFIG_FILE = "./config/websites.json"
+PUNCTUATION_FILE = "./config/punctuation.json"
 DATASET_PATH = "../dataset/news_am/"
 CORPUS_TXT_FILE = ".txt"
 
@@ -25,7 +26,6 @@ def is_clear_paragraph(par):
         return False
 
 def get_cleared_paragraphs(text):
-    #print(text)
     #TEMPORARY RETURINING TO COLLECT FRESH RAW DATA
     return text
 
@@ -57,18 +57,18 @@ def write_into_file(fn, c):
     f.write(c)
     f.close()
 
-def load_configs():
-    f = open(CONFIG_FILE)
+def load_configs(cf):
+    f = open(cf)
     data = json.load(f)
     f.close()
     return data
 
 def main():
     #Loading website text scraping configs
-    configs = load_configs()
+    configs = load_configs(CONFIG_FILE)
+    punctuation = load_configs(PUNCTUATION_FILE)
     #Fetching
     for site in configs["websites"]:
-        #print(site)
         if "news_am" == site["title"]:
             site["min"] = "642" # Remove after interrupted cycle
             for i in range(int(site["min"]), int(site["max"])):
