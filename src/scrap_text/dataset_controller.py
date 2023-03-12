@@ -4,7 +4,7 @@
 
 import pdb
 
-DATASET_PATH = "../dataset/"
+DATASET_PATH = "../dataset/news_am/"
 test_txt_file = "Harry Potter and the Deathly Hallows.txt"
 test_file = "test.txt"
 
@@ -49,10 +49,11 @@ def split_words(text):
     return text
 
 #text = load_dataset(test_txt_file)
-database_text = load_dataset(test_file)
-words = split_words(database_text)
-
-file = open(DATASET_PATH + "words_hp.txt", mode="w")
-file.writelines(words)
-file.close()
-print(words)
+## COmmented not to call
+#database_text = load_dataset(test_file)
+#words = split_words(database_text)
+#
+#file = open(DATASET_PATH + "words_hp.txt", mode="w")
+#file.writelines(words)
+#file.close()
+#print(words)
